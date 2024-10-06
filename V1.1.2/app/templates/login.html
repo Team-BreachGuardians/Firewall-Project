@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    .password-container {
+      position: relative;
+      width: 100%;
+    }
+    .password-container i {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <form action="/login" method="POST">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="text" name="email" placeholder="Email" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box password-container">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt' id="togglePassword"></i>
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox" name="remember">Remember Me</label>
+        <a href="#">Forgot Password</a>
+      </div>
+      <button type="submit" class="btn">
+        Login
+      </button>
+      <div class="register-link">
+        <p>Don't have an account? <a href="#">Register</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      if (type === 'password') {
+        togglePassword.classList.add('bx-bxs-lock-alt');
+        togglePassword.classList.remove('bx-show');
+      } else {
+        togglePassword.classList.add('bx-show');
+        togglePassword.classList.remove('bx-bxs-lock-alt');
+      }
+    });
+  </script>
+</body>
+</html>

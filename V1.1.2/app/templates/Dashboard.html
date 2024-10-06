@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!--font link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+    :root{
+        --main-color:#d3ad7f;
+        --black:#13131a;
+        --bg:#010103;
+        --border: .1rem solid rgba(255,255,255,.3);
+    }
+
+    *{
+        font-family: 'Roboto', sans-serif;
+        margin:0; 
+        padding:0;
+        box-sizing: border-box;
+        outline: none; border: none;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: .2s linear;
+    }
+    html{
+    font-size: 62.5%;
+    overflow-x:hidden ;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+    }
+
+    html::-webkit-scrollbar{
+        --width: .8rem;
+    }
+
+    html::-webkit-scrollbar-track{
+        background: transparent;
+    }
+
+    html::-webkit-scrollbar-thumb{
+        background: #fff;
+        border-radius: 5rem;
+    }
+        
+    body{
+            background-color: var(--bg);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    section{
+        padding: 2rem 7%;
+        display: flex;
+    }
+    .header{
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 5%; /* Reduced padding for a smaller navbar */
+        border-bottom: var(--border);
+        position: fixed;
+        top: 0; 
+        left: 0; 
+        right: 0;
+        z-index: 1000;
+    }
+
+
+    .header .logo img{
+        height: 6rem;
+        margin-top: 10px;
+        margin-left: 20px;
+        margin-bottom: 5px;
+}
+    
+    .header .navbar a{
+        margin: 0 1.5rem;
+        font-size: 1.6rem;
+        color: #fff;    
+    }
+    .header .navbar a:hover{
+        color:var(--main-color);
+        border-bottom: .1rem solid var(--main-color);
+        padding-bottom: .5rem ;
+    }
+
+    .header .icons div{
+        color: #fff;
+        cursor: pointer;
+        font-size: 2.5rem;
+        margin-left: 2rem;
+        margin-right: 2.5rem;
+    }
+
+    .header .icons div:hover{
+        color:var(--main-color);
+    }
+    #menu-btn{
+        display: none;
+    }
+
+    .header .search-form{
+        position: absolute;
+        top: 115%; right: 7%;
+        background: #fff ;
+        width: 50rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    .header .search-form input{
+        height: 100%;
+        width: 100%;
+        font-size: 1.6rem;
+        color: var(--black);
+        padding: 1rem;
+        text-transform: none;
+    }
+    .header .search-form label{
+        cursor: pointer;
+        font-size: 2.2rem;
+        margin-right: 1.5rem;
+        color: var(--black);
+    }
+
+    .header .search-form label:hover{
+        color: var(--main-color);
+    }
+
+    @media(max-width:991px) {
+        html{
+            font-size: 55%;        
+        }
+
+        .header{
+            padding: 1.5rem - 2rem;
+        }
+
+        section{
+            padding: 2rem;
+        }
+
+        .box-container{
+            width: 100%;
+        }
+        .box-container .box{
+            width: 100%;
+        }
+        .container{
+            width: 100%;
+    }
+}
+
+    @media(max-width:768px) {
+        #menu-btn{
+            display: inline-block;
+        }
+
+        .header .navbar{
+            position: absolute;
+            top: 100%; right: -100%;
+            background: #fff;
+            width: 30rem;
+            height: calc(100vh - 9.5rem);
+        }
+
+        .header .navbar.active{
+            right: 0;
+        }
+
+        .header .navbar a{
+            color: var(--black);
+            display: block;
+            margin: 1.5rem;
+            padding: .5rem;
+            font-size: 2rem;
+        }
+        .home{
+            background-position: left;
+            justify-content: center;
+            text-align: center;
+        }
+            
+        .home .content h1{
+            font-size: 4.5rem;
+        }
+
+        .home .content p{
+            font-size: 1.5rem;
+        }
+        .box-container{
+            width: 100%;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            gap: 15px; 
+            padding: 0 1rem; 
+            align-items: center; /* Center items horizontally */
+        
+        }
+        .box-container .box{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            max-width: max-content; /* Optional: limit the maximum width */
+
+        }
+        .container{
+            width: 80% !important;
+            margin: 0 ;
+            max-width: 100%;
+            padding: 1rem; /* Adjust padding if needed */
+            box-sizing: border-box; 
+            align-items: center;
+        
+        }
+    }
+
+    @media(max-width:450px) {
+        html{
+            font-size: 50%;        
+        }
+        .box-container{
+            width: 100%;
+            padding: 0 1rem;
+        }
+        .box-container .box{
+            width: 100%;
+            padding: 0;
+        }
+        .container{
+            width: 80% !important;
+            max-width: 100%;
+            padding: 0.5rem;
+            align-items: center;
+        }
+    }
+    
+    .home{
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .home .content{
+        max-width: 100%;
+        text-align: center;
+        margin-top: 10rem;
+    }
+
+    .home .content h1{
+        font-size: 36px;
+        text-transform: uppercase;
+        color: var(--main-color);
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .home .content p{
+        font-size:2rem;
+        color: #eee;
+        word-spacing: 3px;
+    }
+
+    .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 15px;
+        color: #ccc;
+        text-align: center;
+        margin: 0 50px 0 50px;
+        padding: 0 50px 0 50px;
+        display: flex;
+        }
+    .box-container .box{
+            background: #1f1f1f;
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 30px;
+            padding: 10px;
+            border: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            height: 60%;
+
+    }
+    .box-container .box:hover{
+        transform: translateY(-20px);
+    }
+
+    .box-container .box img{
+            font-size: 50px;
+            color: #007bff;
+            width: 50px;
+            margin-bottom: 20px;
+    }
+
+    .box-container .box h3{
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--main-color);
+    }
+
+    .box-container .box p{
+        font-size: 16px;
+        color: #aaa;
+        margin-bottom: 20px;
+        word-spacing: 3px;
+    }
+    .btn {
+        display: inline-block;
+        padding: 1rem 3rem;
+        font-size: 1.5rem;
+        color: var(--black);
+        background: var(--main-color); /* Use main color as the background */
+        border-radius: 5rem; /* Rounded corners */
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+        margin-bottom: 20px;
+        }
+
+    .btn:hover {
+        color: #eee; /* Text color on hover */
+        background: rgba(211, 173, 127, 0.8); /* Slightly transparent main color on hover */
+        box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        transform: translateY(-0.3rem); /* Slight lift effect on hover */
+    }
+
+    .container {
+            background: #1f1f1f;
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 30px;
+            padding: 10px;
+            border: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            width: 40%;
+            max-width: 100%;
+            box-sizing: border-box;
+    }
+    .container:hover{
+        transform: translateY(-20px);
+    }
+    .container img{
+            font-size: 70px;
+            color: #007bff;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
+            align-items: center;
+            justify-content: center;
+    }
+
+    .container h3{
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: var(--main-color);
+    }
+
+    .container p{
+        font-size: 16px;
+        color: #aaa;
+        margin-bottom: 20px;
+        word-spacing: 3px;
+    }
+
+    .footer {
+    background: var(--black);
+    text-align: center !important;
+    padding: 0.5rem 5%; /* Reduced padding */
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Changed to column to stack elements */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    }
+
+    .footer .share {
+        padding: 0.5rem 0; /* Reduced padding */
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer .share a {
+        height: 4rem; /* Reduced size */
+        width: 4rem; /* Reduced size */
+        line-height: 4rem; /* Adjusted line height */
+        font-size: 1.4rem; /* Slightly smaller font size */
+        color: #fff;
+        border: var(--border);
+        margin: 0 0.3rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer .share a:hover {
+        background-color: var(--main-color);
+    }
+
+    .footer .links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 1rem 1rem; /* Reduced padding */
+        gap: 0.3rem; /* Reduced gap */
+    }
+
+    .footer .links a {
+        padding: 0.5rem 1.5rem; /* Reduced padding */
+        color: #ccc;
+        border: var(--border);
+        border-radius: 15%; /* Adjusted border radius */
+        font-size: 1.4rem; /* Slightly smaller font size */
+        margin: 0;
+    }
+
+    .footer .links a:hover {
+        color: var(--main-color);
+    }
+
+    .footer .credit {
+        font-size: 1.5rem; /* Reduced font size */
+        color: #d3ad7f;
+        font-weight: lighter;
+        padding: 0.8rem; /* Reduced padding */
+        text-align: center;
+    }
+
+
+
+</style>
+</head>
+<body>
+    <header class="header">
+        <a href="./Home.html" class="logo"><img src="logo.jpg" width="80px" alt=""></a>
+        <nav class="navbar">
+            <a href="./Home.html">Home</a>
+            <a href="./Dashboard.html">Dashboard</a>
+            <a href="./Feature.html">Features</a>
+            <a href="#">Policies</a>
+            <a href="#">Contact</a>
+        </nav>
+    
+        <div class="icons">
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="search here...">
+            <label for="search-box" class="fas fa-search"></label>
+        </div>
+    </header>
+    <section class="home" id="home">
+        <div class="content">
+            <h1>Dashboard</h1>
+            <p>Your one stop solution to keep track on the accepted and denied requests into your system through our firewall.</p>
+        </div>
+    </section>
+    <div class="box-container">
+        <div class="box">
+            <img src="tick.webp" alt="">
+               <h3>Accepted Requests</h3>
+               <p>Monitor the Domains and IP addresses of the websites which are accepted in your server. </p>
+               <a href="#" class="btn">View More</a>
+        </div>
+
+        <div class="box">
+            <img src="cross.webp" alt="">
+               <h3>Denied Requests</h3>
+               <p>Monitor the Domains and IP addresses of the websites which are denied in your server. </p>
+               <a href="#" class="btn">View More</a>
+        </div>
+    </div>
+    <div class="container">
+        <img src="./web.png" alt="">
+        <h3>All Requests</h3>
+        <p>Twinkle twinkle little star How I wonder what you are.</p>         
+        <a href="#" class="btn">View More</a>
+
+    </div>
+
+    <!--FOOTER-->
+    <section class="footer">
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-linkedin-in"></a>
+            <a href="#" class="fab fa-github"></a>
+        </div>
+
+        <div class="links">
+            <a href="./Home.html">Home</a>
+            <a href="#">Dashboard</a>
+            <a href="./Feature.html">Features</a>
+            <a href="#">Policies</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="credit">Created By BreachGuardians  |   All Rights Reserved </div>
+    </section>
+    
+    <script>
+        let navbar = document.querySelector('.navbar');
+
+        document.querySelector('#menu-btn').onclick = () =>{
+            navbar.classList.toggle('active');
+        }
+
+        let searchform = document.querySelector('.search-form');
+
+        document.querySelector('#search-btn').onclick = () =>{
+            searchform.classList.toggle('active');
+        }
+
+        window.onscroll = () =>{
+            navbar.classList.remove('active');
+            searchform.classList.remove('active');
+        }
+    </script>    
+</body>
+</html>

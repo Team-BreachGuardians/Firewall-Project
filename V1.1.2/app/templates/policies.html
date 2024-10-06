@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Policies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+    :root{
+        --main-color:#d3ad7f;
+        --black:#13131a;
+        --bg:#010103;
+        --border: .1rem solid rgba(255,255,255,.3);
+    }
+
+    *{
+        font-family: 'Roboto', sans-serif;
+        margin:0; 
+        padding:0;
+        box-sizing: border-box;
+        outline: none; border: none;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: .2s linear;
+    }
+    html{
+    font-size: 62.5%;
+    overflow-x:hidden ;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+    }
+
+    html::-webkit-scrollbar{
+        --width: .8rem;
+    }
+
+    html::-webkit-scrollbar-track{
+        background: transparent;
+    }
+
+    html::-webkit-scrollbar-thumb{
+        background: #fff;
+        border-radius: 5rem;
+    }
+
+    body{
+            background-color: var(--bg);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            margin-bottom: 0;
+            padding: 0;
+        }
+        .header{
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 5%; 
+        border-bottom: var(--border);
+        position: fixed;
+        top: 0; 
+        left: 0; 
+        right: 0;
+        z-index: 1000;
+    }
+
+
+    .header .logo img{
+        height: 6rem;
+        margin-top: 10px;
+        margin-left: 20px;
+        margin-bottom: 5px;
+}
+    
+    .header .navbar a{
+        margin: 0 1.5rem;
+        font-size: 1.6rem;
+        color: #fff;    
+    }
+    .header .navbar a:hover{
+        color:var(--main-color);
+        border-bottom: .1rem solid var(--main-color);
+        padding-bottom: .5rem ;
+    }
+
+    .header .icons div{
+        color: #fff;
+        cursor: pointer;
+        font-size: 2.5rem;
+        margin-left: 2rem;
+        margin-right: 2.5rem;
+    }
+
+    .header .icons div:hover{
+        color:var(--main-color);
+    }
+    #menu-btn{
+        display: none;
+    }
+
+    .header .search-form{
+        position: absolute;
+        top: 115%; right: 7%;
+        background: #fff ;
+        width: 50rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    .header .search-form input{
+        height: 100%;
+        width: 100%;
+        font-size: 1.6rem;
+        color: var(--black);
+        padding: 1rem;
+        text-transform: none;
+    }
+    .header .search-form label{
+        cursor: pointer;
+        font-size: 2.2rem;
+        margin-right: 1.5rem;
+        color: var(--black);
+    }
+
+    .header .search-form label:hover{
+        color: var(--main-color);
+    }
+    section{
+        padding: 2rem 7%;
+        display: flex;
+    }            
+                
+    .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: auto auto; 
+    gap: 3rem 8rem; 
+    justify-items: center; 
+    align-items: center; 
+    padding: 2rem;
+    margin-top: 60px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+
+    .policy-toggle {
+        background: #1f1f1f; 
+        color: #fff; 
+        padding: 2rem;
+        border-radius: 15px; 
+        width: 300px; 
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 0;
+    }
+
+    .policy-toggle:nth-child(1) {
+        grid-column: 2 / 3; /* Span both columns */
+        grid-row: 1; 
+        justify-self: center !important;
+    }
+
+    .policy-toggle:nth-child(2),
+    .policy-toggle:nth-child(3),
+    .policy-toggle:nth-child(4) {
+        grid-row: 2; 
+        margin-bottom: 20px;
+    }
+
+
+    .policy-toggle:hover{
+        transform: translateY(-20px);
+    }
+
+    .policy-toggle h3 {
+        margin-bottom: 1.5rem;
+        font-size: 16px;
+    }
+    .policy-toggle img{
+        
+        display: block;
+        margin: 0 auto; 
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+}   
+    
+    .toggle-button {
+        padding: 0.8rem 1.5rem;
+        background-color:purple; 
+        color: #fff;
+        font-size: 15px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .toggle-button:hover {
+        color: #eee; 
+        font-size: 15px;
+        background-color: rgba(162, 108, 175, 0.3);  
+        box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.5); 
+        transform: translateY(-0.3rem); 
+    }
+
+    .toggle-button.off {
+        font-size: 15px;
+        background-color: var(--main-color); 
+        border-radius: 15px;
+    }
+
+    .toggle-button.off:hover {
+        color: #eee; 
+        font-size: 15px;
+        background-color: rgba(211, 173, 127, 0.8); /* Slightly transparent main color on hover */
+        box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        transform: translateY(-0.3rem);
+    }
+
+
+    .firewall-toggle, .policy-section, .policy-actions {
+        background-color: #1e1e1e;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 10px;
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+    }
+
+    @media(max-width:991px) {
+        html{
+            font-size: 55%;        
+        }
+
+        .header{
+            padding: 1.5rem - 2rem;
+        }
+    
+    .content {
+        grid-template-columns: 1fr; 
+        grid-template-rows: repeat(auto-fit, minmax(200px, auto));
+        justify-items: center;
+    }
+
+    .policy-toggle:nth-child(1) {
+        grid-column: 1; 
+        justify-self: center;
+    }
+
+    .policy-toggle:nth-child(2),
+    .policy-toggle:nth-child(3),
+    .policy-toggle:nth-child(4) {
+        grid-row: auto; 
+    }
+}
+
+    
+    @media (max-width: 768px) {
+        #menu-btn{
+            display: inline-block;
+        }
+
+        .header .navbar{
+            position: absolute;
+            top: 100%; right: -100%;
+            background: #fff;
+            width: 30rem;
+            height: calc(100vh - 9.5rem);
+        }
+
+        .header .navbar.active{
+            right: 0;
+        }
+
+        .header .navbar a{
+            color: var(--black);
+            display: block;
+            margin: 1.5rem;
+            padding: .5rem;
+            font-size: 2rem;
+        }
+
+        .firewall-toggle, .policy-section, .policy-actions {
+            width: 90%;
+        }
+        .content {
+        grid-template-columns: 1fr; 
+    }
+
+    .policy-toggle:nth-child(1) {
+        grid-column: 1; 
+    }
+
+    .policy-toggle:nth-child(2),
+    .policy-toggle:nth-child(3),
+    .policy-toggle:nth-child(4) {
+        grid-row: auto;
+    }
+    }
+
+
+    @media(max-width:450px) {
+        html{
+            font-size: 50%;        
+        }
+        .content {
+        grid-template-columns: 1fr;
+        gap: 1rem; 
+        padding: 1rem; 
+    }
+
+    .policy-toggle {
+        width: 100%; 
+        max-width: none; 
+        padding: 1rem; 
+    }
+    }
+
+    .footer {
+    background: var(--black);
+    text-align: center !important;
+    padding: 0.5rem 5%; 
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center; 
+    }
+
+    .footer .share {
+        padding: 0.5rem 0; 
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer .share a {
+        height: 4rem; 
+        width: 4rem; 
+        line-height: 4rem; 
+        font-size: 1.4rem; 
+        color: #fff;
+        border: var(--border);
+        margin: 0 0.3rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer .share a:hover {
+        background-color: var(--main-color);
+    }
+
+    .footer .links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 1rem 1rem; 
+        gap: 0.3rem; 
+    }
+
+    .footer .links a {
+        padding: 0.5rem 1.5rem;
+        color: #ccc;
+        border: var(--border);
+        border-radius: 15%; 
+        font-size: 1.4rem; 
+        margin: 0;
+    }
+
+    .footer .links a:hover {
+        color: var(--main-color);
+    }
+
+    .footer .credit {
+        font-size: 1.5rem; 
+        color: #d3ad7f;
+        font-weight: lighter;
+        padding: 0.8rem; 
+        text-align: center;
+    }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="./Home.html" class="logo"><img src="logo.jpg" width="80px" alt=""></a>
+        <nav class="navbar">
+            <a href="./Home.html">Home</a>
+            <a href="./Dashboard.html">Dashboard</a>
+            <a href="./Feature.html">Features</a>
+            <a href="./policies.html">Policies</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="search here...">
+            <label for="search-box" class="fas fa-search"></label>
+        </div>
+    </header>
+
+    <section class="content" style="margin-top: 150px;">
+        <div class="policy-toggle">
+            <img src="./firewall.png" alt="">
+            <h3 id="firewall-status">Firewall is OFF</h3>
+            <button class="toggle-button off" onclick="verifyPassword('toggleFirewall')">Turn on Firewall</button>
+        </div>
+
+        <div class="policy-toggle">
+            <img src="./Port.jpg" alt="">
+            <h3>Block All Sites Accessing TCP Port</h3>
+            <button class="toggle-button off" onclick="togglePolicy('TCP Port Policy')">Toggle TCP Port Policy</button>
+        </div>
+
+        <div class="policy-toggle">
+            <img src="./TCP.png" alt="">
+            <h3>Block All Sites Using TCP</h3>
+            <button class="toggle-button off" onclick="togglePolicy('TCP Policy')">Toggle TCP Policy</button>
+        </div>
+
+        <div class="policy-toggle">
+            <img src="./UDP.png" alt="">
+            <h3>Block All Sites Using UDP</h3>
+            <button class="toggle-button off" onclick="togglePolicy('UDP Policy')">Toggle UDP Policy</button>
+        </div>
+    </section>
+    <!--FOOTER-->
+    <section class="footer">
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-linkedin-in"></a>
+            <a href="#" class="fab fa-github"></a>
+        </div>
+
+        <div class="links">
+            <a href="./Home.html">Home</a>
+            <a href="#">Dashboard</a>
+            <a href="./Feature.html">Features</a>
+            <a href="#">Policies</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="credit">Created By BreachGuardians  |   All Rights Reserved </div>
+    </section>
+
+    <script>
+        function verifyPassword(action) {
+            if (action === 'toggleFirewall') {
+                const password = prompt("Enter your password:");
+                if (password) {
+                    fetch('/verify-password', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `password=${encodeURIComponent(password)}`
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        if (result === "true") {
+                            toggleFirewall();
+                        } else {
+                            alert("Incorrect password. Please try again.");
+                        }
+                    });
+                }
+            }
+        }
+
+        function toggleFirewall() {
+            const firewallStatus = document.getElementById('firewall-status');
+            const button = document.querySelector('.policy-toggle button');
+
+            if (firewallStatus.innerText === "Firewall is OFF") {
+                firewallStatus.innerText = "Firewall is ON";
+                button.innerText = "Turn off Firewall";
+                button.classList.remove('off');
+            } else {
+                firewallStatus.innerText = "Firewall is OFF";
+                button.innerText = "Turn on Firewall";
+                button.classList.add('off');
+            }
+        }
+
+        function togglePolicy(policyName) {
+            const buttons = document.querySelectorAll('.policy-toggle button');
+            buttons.forEach(button => {
+                if (button.innerText.includes(policyName)) {
+                    if (button.classList.contains('off')) {
+                        button.classList.remove('off');
+                        button.innerText = `Turn off ${policyName}`;
+                    } else {
+                        button.classList.add('off');
+                        button.innerText = `Turn on ${policyName}`;
+                    }
+                }
+            });
+        }
+
+        let navbar = document.querySelector('.navbar');
+
+        document.querySelector('#menu-btn').onclick = () =>{
+            navbar.classList.toggle('active');
+        }
+
+        let searchform = document.querySelector('.search-form');
+
+        document.querySelector('#search-btn').onclick = () =>{
+            searchform.classList.toggle('active');
+        }
+
+        window.onscroll = () =>{
+            navbar.classList.remove('active');
+            searchform.classList.remove('active');
+        }
+    </script>
+</body>
+</html>

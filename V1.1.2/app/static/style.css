@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+
+:root{
+    --main-color:#d3ad7f;
+    --black:#13131a;
+    --bg:#010103;
+    --border: .1rem solid rgba(255,255,255,.3);
+
+}
+
+*{
+    font-family: 'Roboto', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+
+
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x:hidden ;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    --width: .8rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: #fff;
+    border-radius: 5rem;
+}
+
+body{
+    background: var(--bg) !important;
+    }
+
+section{
+    padding: 2rem 7%;
+}
+
+.heading{
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    padding-bottom: 3.5rem;
+    font-size: 4rem;
+}
+.heading span{
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+    
+.header{
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1.5rem 7%;
+    border-bottom: var(--border);
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+
+}
+
+.header .logo img{
+    height: 6rem;
+}
+
+.header .navbar a{
+    margin: 0 1.5rem;
+    font-size: 1.6rem;
+    color: #fff;    
+}
+.header .navbar a:hover{
+    color:var(--main-color);
+    border-bottom: .1rem solid var(--main-color);
+    padding-bottom: .5rem ;
+}
+
+.header .icons div{
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+
+.header .icons div:hover{
+    color:var(--main-color);
+}
+#menu-btn{
+    display: none;
+}
+
+.header .search-form{
+    position: absolute;
+    top: 115%; right: 7%;
+    background: #fff ;
+    width: 50rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    transform: scaleY(0);
+    transform-origin: top;
+    
+}
+
+
+
+.header .search-form input{
+    height: 100%;
+    width: 100%;
+    font-size: 1.6rem;
+    color: var(--black);
+    padding: 1rem;
+    text-transform: none;
+
+}
+.header .search-form label{
+    cursor: pointer;
+    font-size: 2.2rem;
+    margin-right: 1.5rem;
+    color: var(--black);
+}
+
+.header .search-form label:hover{
+    color: var(--main-color);
+
+}
+
+
+
+
+@media(max-width:991px) {
+    html{
+        font-size: 55%;        
+
+}
+
+.header{
+    padding: 1.5rem - 2rem;
+}
+
+section{
+    padding: 2rem;
+}
+
+}
+
+@media(max-width:768px) {
+
+
+    #menu-btn{
+        display: inline-block;
+    }
+
+    .header .navbar{
+        position: absolute;
+        top: 100%; right: -100%;
+        background: #fff;
+        width: 30rem;
+        height: calc(100vh - 9.5rem);
+
+    }
+
+    .header .navbar.active{
+        right: 0;
+    }
+
+    .header .navbar a{
+        color: var(--black);
+        display: block;
+        margin: 1.5rem;
+        padding: .5rem;
+        font-size: 2rem;
+    }
+    .home{
+        background-position: left;
+        justify-content: center;
+        text-align: center;
+    }
+        
+    .home .content h3{
+      font-size: 4.5rem;
+    }
+
+    .home .content p{
+        font-size: 1.5rem;
+      }
+        
+
+}
+
+@media(max-width:450px) {
+    html{
+        font-size: 50%;        
+
+}
+
+
+
+}
+
+.home{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background:url(./bg.webp) no-repeat;
+    background-size:cover;
+    background-position: center;
+}
+
+.home .content{
+    max-width: 60rem;
+}
+
+.home .content h3{
+    font-size: 6rem;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.home .content p{
+    font-size:2rem;
+    font-weight: lighter;
+    line-height: 1.8;
+    padding: 1rem 0;
+    color: #eee;
+}
+/* Button Styles */
+.home .content .btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    background: var(--main-color); /* Use main color as the background */
+    border-radius: 5rem; /* Rounded corners */
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+.home .content .btn:hover {
+    color: #eee; /* Text color on hover */
+    background: rgba(211, 173, 127, 0.8); /* Slightly transparent main color on hover */
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+    transform: translateY(-0.3rem); /* Slight lift effect on hover */
+}
+
+
+.About .row{
+    display: flex;
+    align-items:center;
+    background: var(--black);
+    flex-wrap: wrap;
+}
+
+.About .row .image{
+    flex: 1 1 45rem;
+}
+
+
+.About .row .image img{
+    width: 100%;
+
+}
+
+
+.About .row .content{
+    flex: 1 1 45rem;
+    padding: 2rem;
+}
+
+
+.About .row .content h3{
+    font-size: 3rem;
+    color: #fff;
+}
+
+.About .row .content p{
+    font-size: 1.5rem;
+    color: #ccc;
+    padding: 1rem;
+    line-height: 1.8;
+}
+.About .row .content .btn{
+    /* Button Styles */
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    background: var(--main-color); /* Use main color as the background */
+    border-radius: 5rem; /* Rounded corners */
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+.About .row .content .btn:hover {
+    color: #eee; /* Text color on hover */
+    background: rgba(211, 173, 127, 0.8); /* Slightly transparent main color on hover */
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+    transform: translateY(-0.3rem); /* Slight lift effect on hover */
+}
+
+.footer {
+    background: var(--black);
+    text-align: center !important;
+    padding: 0.5rem 5%; /* Reduced padding */
+}
+
+.footer .share {
+    padding: 0.5rem 0; /* Reduced padding */
+}
+
+.footer .share a {
+    height: 4rem; /* Reduced size */
+    width: 4rem; /* Reduced size */
+    line-height: 4rem; /* Adjusted line height */
+    font-size: 1.4rem; /* Slightly smaller font size */
+    color: #fff;
+    border: var(--border);
+    margin: 0 0.3rem;
+    border-radius: 50%;
+}
+
+.footer .share a:hover {
+    background-color: var(--main-color);
+}
+
+.footer .links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1rem 1rem; /* Reduced padding */
+    gap: 0.3rem; /* Reduced gap */
+}
+
+.footer .links a {
+    padding: 0.5rem 1.5rem; /* Reduced padding */
+    color: #ccc;
+    border: var(--border);
+    border-radius: 15%; /* Adjusted border radius */
+    font-size: 1.4rem; /* Slightly smaller font size */
+    margin: 0;
+}
+
+.footer .links a:hover {
+    color: var(--main-color);
+}
+
+.footer .credit {
+    font-size: 1.5rem; /* Reduced font size */
+    color: #d3ad7f;
+    font-weight: lighter;
+    padding: 0.8rem; /* Reduced padding */
+}

@@ -1,0 +1,94 @@
+{
+  "block_port_80": [
+    {
+      "application": "Browser",
+      "domain": "example.com",
+      "ip": "93.184.216.34",
+      "protocol": "TCP",
+      "port": "80",
+      "action": "block"
+    },
+    {
+      "application": "Browser",
+      "domain": "socialmedia.com",
+      "ip": "192.0.2.1",
+      "protocol": "UDP",
+      "port": "80",
+      "action": "block"
+    }
+  ],
+  "block_tcp_sites": [
+    {
+      "application": "Browser",
+      "domain": "example.com",
+      "ip": "93.184.216.34",
+      "protocol": "TCP",
+      "action": "block"
+    },
+    {
+      "application": "Browser",
+      "domain": "streamingservice.com",
+      "ip": "198.51.100.2",
+      "protocol": "TCP",
+      "action": "block"
+    },
+    {
+      "application": "Browser",
+      "domain": "gamingplatform.com",
+      "ip": "203.0.113.4",
+      "protocol": "TCP",
+      "action": "block"
+    },
+    {
+      "application": "Browser",
+      "domain": "newsportal.com",
+      "ip": "93.184.216.5",
+      "protocol": "TCP",
+      "action": "block"
+    },
+    {
+      "application": "Browser",
+      "domain": "malicioussite.com",
+      "ip": "192.0.2.7",
+      "protocol": "TCP",
+      "action": "block"
+    }
+  ],
+  "block_udp_sites": [
+    {
+      "application": "Browser",
+      "domain": "socialmedia.com",
+      "ip": "192.0.2.1",
+      "protocol": "UDP",
+      "action": "block"
+    },
+    {
+      "application": "Browser",
+      "domain": "onlineshopping.com",
+      "ip": "203.0.113.3",
+      "protocol": "UDP",
+      "action": "block"
+    },
+    {
+      "application": "Browser",
+      "domain": "video-sharing.com",
+      "ip": "198.51.100.5",
+      "protocol": "UDP",
+      "action": "block"
+    },
+    {
+      "application": "Browser",
+      "domain": "adultcontent.com",
+      "ip": "203.0.113.6",
+      "protocol": "UDP",
+      "action": "block"
+    },
+    {
+      "application": "Browser",
+      "domain": "unwantedads.com",
+      "ip": "198.51.100.8",
+      "protocol": "UDP",
+      "action": "block"
+    }
+  ]
+}

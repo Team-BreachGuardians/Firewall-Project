@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Features</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #1f1f1f;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #bbb;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 100px auto 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .intro {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            font-size: 18px;
+            color: #bbb;
+        }
+
+        .feature-box {
+            background: #1f1f1f;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 48%;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .feature-description {
+            font-size: 16px;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .feature-box {
+                width: 100%;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            .navbar a {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Dashboard</a>
+        <a href="#">Policies</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <h1>Firewall Features</h1>
+            <p>Explore the powerful features of our firewall solution, designed to provide top-notch security and control over your network traffic.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-title">Application-Level Firewall</div>
+            <div class="feature-description">
+                Granular control over which applications can access the network, with the ability to block or allow based on domain, IP, and protocol.
+            </div>
+        </div>
+        
+        <div class="feature-box">
+            <div class="feature-icon">🌐</div>
+            <div class="feature-title">Domain & IP Blocking</div>
+            <div class="feature-description">
+                Block access to specific domains or IP addresses for any application, ensuring secure and controlled network usage.
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">📊</div>
+            <div class="feature-title">Network Usage Monitoring</div>
+            <div class="feature-description">
+                Monitor network usage of each application and detect any unusual activity, with alerts sent to a centralized dashboard.
+            </div>
+        </div>
+        
+        <div class="feature-box">
+            <div class="feature-icon">⚙️</div>
+            <div class="feature-title">Centralized Management</div>
+            <div class="feature-description">
+                Manage all firewall policies from a centralized web console, with the ability to deploy policies across all end-points.
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">🔔</div>
+            <div class="feature-title">Real-Time Alerts</div>
+            <div class="feature-description">
+                Receive real-time alerts on the central dashboard when an application attempts to access restricted domains or IPs.
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">🧠</div>
+            <div class="feature-title">AI/ML Traffic Analysis</div>
+            <div class="feature-description">
+                Advanced AI/ML algorithms analyze network traffic patterns to detect and prevent potential security threats.
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">📁</div>
+            <div class="feature-title">Policy Management</div>
+            <div class="feature-description">
+                Create, activate, and delete firewall policies with ease, all from a user-friendly interface.
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">📝</div>
+            <div class="feature-title">Logs & Reports</div>
+            <div class="feature-description">
+                Access detailed logs and reports of all network activity, including denied requests and policy violations.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

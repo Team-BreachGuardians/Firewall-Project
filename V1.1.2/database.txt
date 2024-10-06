@@ -1,0 +1,5 @@
+create database firewall_complete_db
+use firewall_complete_db;
+create table login_info(email varchar(50), password varchar(20), username varchar(20));
+insert into login_info(email,password,username) value("admin@gmail.com","12345","admin");
+select * from login_info;
